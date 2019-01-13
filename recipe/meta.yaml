@@ -26,6 +26,15 @@ requirements:
     - numpy >=1.11.0
     - scipy >=0.17.1
     - pywin32  # [win]
+  run_constrained:
+    # If optional dependencies are installed, ensure they're compatible
+    - notebook 4.*
+    - ipywidgets 4.*
+    - cython >=0.23.4
+    - theano >=0.8.0
+    # Required for examples:
+    - version_information
+    - matplotlib >=1.5.1
 
 test:
   imports:
@@ -44,7 +53,7 @@ outputs:
     requirements:
       run:
         - python
-        - pydy
+        - pydy {{ version }}
         # Optional dependencies:
         - notebook
         - ipywidgets
@@ -53,17 +62,6 @@ outputs:
         # Required for examples:
         - version_information
         - matplotlib
-      run_constrained:
-        - python
-        - pydy {{ version }}
-        # Optional dependencies:
-        - notebook 4.*
-        - ipywidgets 4.*
-        - cython >=0.23.4
-        - theano >=0.8.0
-        # Required for examples:
-        - version_information
-        - matplotlib >=1.5.1
     test:
       imports:
         - pydy
